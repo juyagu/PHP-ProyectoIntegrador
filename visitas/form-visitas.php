@@ -1,3 +1,7 @@
+
+<?php 
+require_once ('../conf.inc.php');
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -10,19 +14,19 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
 
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../css/main.css">
 
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+        <script src="../js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
     </head>
     <body>
 
         <div class="container-fluid">
-            <div id="top"><img src="imagenes/top.png" alt="encabezado" width="980" height="80"></div>
-            <?php require_once 'views/menu.php'; ?>
+            <div id="top"><img src="../imagenes/top.png" alt="encabezado" width="980" height="80"></div>
+            <?php require_once '../menu.php'; ?>
 
             <h1>Panel de Control - Libro de visitas</h1>
             <div id="main">
@@ -52,15 +56,15 @@
             </div>
         </div>
         <div id="pie">
-            <?php require_once("views/pie.php") ?>
+            <?php require_once("../views/pie.php") ?>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
 
-        <script src="js/main.js"></script>
+        <script src="../js/main.js"></script>
 
     </body>
 </html>

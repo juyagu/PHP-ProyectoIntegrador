@@ -1,12 +1,4 @@
-<?php 
 
-require_once("../BD/conexion.php");
-
-$sql = "select * from productos";
-
-$stmt = $db->query($sql);
-$reg = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -26,42 +18,23 @@ $reg = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <link rel="stylesheet" href="../css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
     </head>
     <body>
 
         <div class="container-fluid">
             <div id="top"><img src="../imagenes/top.png" alt="encabezado" width="980" height="80"></div>
-            <?php require_once '../views/menu.php'; ?>
+            <?php require_once '../menu.php'; ?>
 
             <h1>Panel de Control - Proyecto Integrador</h1>
 
-            <div class="panel panel-default">
-              <!-- Default panel contents -->
-                  <div class="panel-heading">Panel heading</div>
-                  <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
-                            <th>Imagen</th>
-                            <th></th>
-                        </tr>
-                        <tbody>
-                            <td></td>
-                        </tbody>
-                    </thead>
-                  </table>
-            </div>
-
         </div>
         <div id="pie">
-            <?php require_once("views/pie.php") ?>
+            <?php require_once("../views/pie.php") ?>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="j../s/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="../js/vendor/bootstrap.min.js"></script>
 

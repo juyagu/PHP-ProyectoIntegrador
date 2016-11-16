@@ -1,3 +1,6 @@
+
+
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,15 +11,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Inicio</a>
+            <a class="navbar-brand" href="../inicio/welcome.php">Inicio</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="form-visitas.php">Libro de Visitas<span class="sr-only">(current)</span></a></li>
+                <li><a href="../visitas/form-visitas.php">Libro de Visitas<span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Listado de Usuarios</a></li>
-                <li><a href="paneles/panel-productos.php">Listado de Productos</a></li>
+                <li><a href="../productos/panel-productos.php">Listado de Productos</a></li>
                 <li><a href="#">Listado de Categorias</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
