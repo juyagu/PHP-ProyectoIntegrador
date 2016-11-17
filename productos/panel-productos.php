@@ -1,20 +1,14 @@
 <?php 
-
-require_once ('../conf.inc.php');
-
 require_once("../BD/conexion.php");
 
-$sql = "select * from productos";
-
-$stmt = $db->query($sql);
-$reg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $db->query("select prd_id,prd_nombre,prd_descripcion,prd_precio,prd_foto1 from productos");
+$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+
+<html class="no-js" lang=""> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -38,9 +32,9 @@ $reg = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <h1>Panel de Control - Proyecto Integrador</h1>
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
               <!-- Default panel contents -->
-                  <div class="panel-heading">Panel heading</div>
+                  <div class="panel-heading">Listado de productos</div>
                   <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -49,11 +43,32 @@ $reg = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <th>Precio</th>
                             <th>Imagen</th>
                             <th></th>
+                            <th>
+                                <button type="button" class="btn btn-info" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </th>
                         </tr>
+                        </thead>
                         <tbody>
-                            <td></td>
+                            <?php foreach($resultado as $producto){ ?>
+                            <tr>
+                                <td><?php echo $producto['prd_nombre']; ?></td>
+                                <td><?= $producto['prd_descripcion'] ?></td>
+                                <td>$<?= $producto['prd_precio'] ?></td>
+                                <td><img src="../imagenes/<?= $producto['prd_foto1'] ?>"></td>
+                                <td><button type="button" class="btn btn-success" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </button>
+                                </td>
+                                <td><button type="button" class="btn btn-danger" aria-label="Left Align" id="<?php echo  $producto['prd_id'];?>">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                                </td>
+                            </tr>
+                            <input type="hidden" id="idProducto" value="<?php echo $producto['prd_id']; ?>">
+                            <?php } ?>
                         </tbody>
-                    </thead>
                   </table>
             </div>
 
