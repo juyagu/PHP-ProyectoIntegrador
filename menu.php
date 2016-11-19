@@ -17,9 +17,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="../visitas/form-visitas.php">Libro de Visitas<span class="sr-only">(current)</span></a></li>
+                <li><a href="../views/form-visitas.php">Libro de Visitas<span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Listado de Usuarios</a></li>
-                <li><a href="../productos/panel-productos.php">Listado de Productos</a></li>
+                <li><a href="../views/panel-productos.php">Listado de Productos</a></li>
                 <li><a href="#">Listado de Categorias</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
