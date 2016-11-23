@@ -45,7 +45,7 @@ if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST'){
 ?>
 <?php require_once(ROOT_PATH . '/proyecto/views/cabecera.php'); ?>
 <div class="container-fluid">
-    <h1>Panel de Control - Confirmación de baja de Producto</h1>
+    <h1>Panel de Control - Confirmación de modificación de Producto</h1>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-info">
