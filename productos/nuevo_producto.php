@@ -1,7 +1,13 @@
 <?php 
 require_once('../conf.inc.php');
-include(ROOT_PATH . '/Proyecto/main.php');
-
+if (!$_SESSION['login']) {
+    header("Location: ../index.php");
+    exit;
+}
+if($_SESSION['perfil'] != 'Administrador'){
+    header("Location: ../views/welcome.php");
+    exit;
+}
 $queryCategorias = $db->query("select cat_id,cat_nombre from categorias");
 $categorias = $queryCategorias->fetchAll(PDO::FETCH_ASSOC);
 
@@ -26,8 +32,8 @@ if(isset($_POST['accion']) && $_POST['accion'] == 'guardar'){
         header("Location: mensaje.php?mensaje=El producto fue dado de alta correctamente");
     }
 }
-
 ?>
+<?php require_once(ROOT_PATH . '/proyecto/views/cabecera.php'); ?>
 <div class="container-fluid main">
    <h1>Panel de Control - Confirmación de baja de Producto</h1>
     <div class="row">
@@ -87,8 +93,5 @@ if(isset($_POST['accion']) && $_POST['accion'] == 'guardar'){
         </div>
     </div>
 </div>
- <div id="pie">
-            <?php require_once("../views/pie.php") ?>
-        </div>
-
+<?php require_once(ROOT_PATH . '/proyecto/views/footer.php'); ?>
             

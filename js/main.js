@@ -4,7 +4,7 @@ $(document).ready(function(){
         var idSeleccionado = $(this).attr("id");
         console.log(idSeleccionado);
     }); */
-    $(".btn-danger").click(getIdSeleccionado);
+    //$(".btn-danger").click(getIdSeleccionado);
 
 
 });
@@ -27,4 +27,24 @@ function nuevoProducto(){
 
 function volverAlPanel(){
     document.location.href="panel-productos.php";
+}
+
+function habilitarUsuario(id){
+    document.querySelector("#id_usuarioHabilitar").value = id;
+    var form = document.querySelector("#frm_habilitar");
+    form.submit();
+}
+
+function deshabilitarUsuario(id){
+    document.querySelector("#id_usuarioDeshabilitar").value = id;
+    var form = document.querySelector("#frm_deshabilitar");
+    form.submit();
+}
+
+function eliminarProducto(id){
+    document.location.href="eliminar_producto.php?id=" + id;
+}
+
+function modificarProducto(id){
+    document.location.href="modificar_producto.php?id=" + id;
 }

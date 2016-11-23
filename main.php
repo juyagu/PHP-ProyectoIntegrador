@@ -24,7 +24,7 @@
             <div id="top"><img src="../imagenes/top.png" alt="encabezado" width="980" height="80"></div>
             <?php require_once '../menu.php'; ?>
 
-            <?php include_once(ROOT_PATH . '/Proyecto/views/' . lcfirst(VISTA) . '.php') ?>
+            <?php require_once(ROOT_PATH . '/Proyecto/views/' . lcfirst(VISTA) . '.php') ?>
 
         </div>
        

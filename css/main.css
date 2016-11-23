@@ -37,6 +37,15 @@ h1{
     text-align: center;
 
 }
+h3{
+    /* background-color:#666; */
+    color:#3F6592;
+    /* border-left: 30px solid #fc0; */
+    margin:20px auto;
+    padding:10px;
+    text-align: center;
+
+}
 
 .panel-visitas {
     background-color: #E7F8FF;
