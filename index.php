@@ -1,5 +1,29 @@
 <?php
 require_once("conf.inc.php");
+if(isset($_COOKIE['email']) && isset($_COOKIE['pass']) && isset($_COOKIE['login'])){
+        $email = $_COOKIE['email'];
+        $pwd = md5($_COOKIE['pass']);
+        $query = $db->prepare("select  u.email,u.nombre,u.apellido,u.habilitado,p.detalle perfil from usuarios u"
+                . " join perfiles p"
+                . " on u.perfil = p.id_perfil "
+                . " where email = ?"
+                . " and pass = ?");
+        $query->execute(array($email,$pwd));
+        $usuario = $query->fetch(PDO::FETCH_ASSOC);
+        if(!$usuario){
+            header("Location: views/mensaje.php?mensaje=El usuario no se encuentra registrado"); 
+        }
+        else if($usuario && $usuario['habilitado'] == 0){
+            header("Location: views/mensaje.php?mensaje=El usuario no se encuentra habilitado"); 
+        } else if ($usuario && $usuario['habilitado'] == 1){
+            $_SESSION['login'] = true;
+            $_SESSION['nombre'] = $usuario['nombre'];
+            $_SESSION['apellido'] = $usuario['apellido'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['perfil'] = $usuario['perfil'];
+            header("Location: views/welcome.php"); 
+        }
+}
 
 if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     if($_POST['accion'] == 'registro'){
@@ -23,6 +47,19 @@ if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     
     if($_POST['accion'] == 'ingresar'){
+        if(isset($_POST['remember'])){
+            setcookie("email",$_POST['email_ingreso'],time() + (86400 * 30) , "/");
+            setcookie("pass",$_POST['password_ingreso'],time() + (86400 * 30) , "/");
+            setcookie("recordame",true,time() + (86400 * 30) , "/");
+            setcookie("login",true,time() + (86400 * 30),"/");
+            if(count($_COOKIE) == 0){
+                header("Location: index.php");
+            }
+        } else {
+            setcookie("email","",time() - 3600,"/");
+            setcookie("pass","",time() - 3600,"/");
+            setcookie("recordame","",time() - 3600,"/");
+        }
         $email = $_POST['email_ingreso'];
         $pwd = md5($_POST['password_ingreso']);
         $query = $db->prepare("select  u.email,u.nombre,u.apellido,u.habilitado,p.detalle perfil from usuarios u"
@@ -83,16 +120,18 @@ if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST'){
                             <form id="loginform" class="form-horizontal" role="form" method="post">
                                 <div style="margin-bottom: 25px" class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input id="login-username" type="text" class="form-control" name="email_ingreso" value="" placeholder="email">                                        
+                                    <input id="login-username" type="text" class="form-control" name="email_ingreso" value="<?php echo isset($_COOKIE['email'])?$_COOKIE['email']: '';?>" placeholder="email">                                        
                                 </div>
                                 <div style="margin-bottom: 25px" class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input id="login-password" type="password" class="form-control" name="password_ingreso" placeholder="contraseña">
+                                    <input id="login-password" type="password" class="form-control" name="password_ingreso" placeholder="contraseña" value="<?php echo isset($_COOKIE['pass'])?$_COOKIE['pass']: '';?>">
                                 </div>
                                 <div class="input-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input id="login-remember" type="checkbox" name="remember" value="1"> Recuérdame
+                                            <input id="login-remember" type="checkbox" name="remember" value="1" 
+                                                <?php echo isset($_COOKIE['recordame'])? "checked=true" : '' ?>   
+                                            > Recuérdame
                                         </label>
                                     </div>
                                 </div> 
